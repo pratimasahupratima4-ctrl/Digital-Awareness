@@ -1,0 +1,155 @@
+from flask import Flask, render_template_string
+
+app = Flask(_name_)
+
+html = """
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cyber Security Awareness</title>
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #141e30, #243b55);
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #1f2c3a;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 10px;
+    width: 250px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    background: #00c6ff;
+}
+
+.section {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background: #00c6ff;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+function showSection(id) {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("malware").style.display = "none";
+    document.getElementById("tips").style.display = "none";
+    document.getElementById("examples").style.display = "none";
+    document.getElementById(id).style.display = "block";
+}
+</script>
+
+</head>
+
+<body>
+
+<h1>🔐 Cyber Security Awareness Website</h1>
+
+<div id="home">
+<div class="container">
+    <div class="card" onclick="showSection('malware')">🦠 Malware Info</div>
+    <div class="card" onclick="showSection('tips')">🛡️ Safety Tips</div>
+    <div class="card" onclick="showSection('examples')">⚠️ Real Examples</div>
+</div>
+</div>
+
+<!-- Malware Section -->
+<div id="malware" class="section">
+<h2>🦠 What is Malware?</h2>
+<p>Malware is harmful software that damages or steals data.</p>
+
+<h3>Examples:</h3>
+<ul>
+<li>Virus – infects files</li>
+<li>Worm – spreads automatically</li>
+<li>Trojan – fake software</li>
+<li>Ransomware – locks data for money</li>
+<li>Spyware – tracks your activity</li>
+</ul>
+
+<h3>Prevention:</h3>
+<ul>
+<li>Do not download unknown files</li>
+<li>Use antivirus</li>
+<li>Update software regularly</li>
+<li>Avoid suspicious links</li>
+</ul>
+
+<button onclick="location.reload()">⬅ Back</button>
+</div>
+
+<!-- Tips Section -->
+<div id="tips" class="section">
+<h2>🛡️ Safety Tips</h2>
+<ul>
+<li>Use strong passwords</li>
+<li>Enable 2-factor authentication</li>
+<li>Do not share OTP</li>
+<li>Use secure websites (HTTPS)</li>
+<li>Avoid public WiFi for banking</li>
+<li>Keep system updated</li>
+<li>Install apps from trusted sources</li>
+<li>Logout from shared devices</li>
+<li>Backup your data regularly</li>
+<li>Be aware of phishing emails</li>
+</ul>
+
+<button onclick="location.reload()">⬅ Back</button>
+</div>
+
+<!-- Examples Section -->
+<div id="examples" class="section">
+<h2>⚠️ Real Cyber Threat Examples</h2>
+<ul>
+<li>Fake bank calls asking OTP</li>
+<li>Phishing emails</li>
+<li>Fake job offers</li>
+<li>Instagram account hacking</li>
+<li>UPI fraud links</li>
+<li>Lottery scam</li>
+<li>Free WiFi data theft</li>
+<li>Fake apps stealing data</li>
+<li>Online shopping fraud</li>
+<li>Password guessing attacks</li>
+</ul>
+
+<button onclick="location.reload()">⬅ Back</button>
+</div>
+
+</body>
+</html>
+"""
+
+@app.route("/")
+def home():
+    return render_template_string(html)
+
+if _name_ == "_main_":
+    app.run(debug=True)
